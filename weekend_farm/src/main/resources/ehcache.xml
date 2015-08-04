@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+	updateCheck="false">
+
+	<diskStore path="java.io.tmpdir" />
+	<!--  
+		컨텐츠 상세 정보를 캐시한다.
+		최대 1000개의 객체를 저장할 수 있다.
+		오버플로우된 객체를 디스크에 저장하지 않기 때문에 캐시에 최대 개수는 1000개이다.
+		12시간이상 사용되지 않거나 또는 24시간 이상 캐시에 저장되어 있을 경우 캐시에서 제거된다.
+		VM이 재가동 할때 캐시로 로딩하지 않는다.
+	-->
+	<cache name="apiMemberCache" 
+		eternal="false"
+		maxElementsInMemory="1000" 
+		overflowToDisk="false" 
+		diskPersistent="false"
+		timeToIdleSeconds="43200" 
+		timeToLiveSeconds="86400"
+		memoryStoreEvictionPolicy="LRU" />
+</ehcache>
